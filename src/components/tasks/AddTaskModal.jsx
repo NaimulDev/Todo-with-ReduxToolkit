@@ -15,7 +15,8 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
   };
 
   const onSubmit = (data) => {
-    dispatch(addTask(data));
+    const taskData = { ...data, status: "pending" };
+    dispatch(addTask(taskData));
     onCancel();
   };
 
@@ -32,14 +33,14 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
         </div>
         <div>
           <label htmlFor="Dedline">Dedline</label>
-          <input type="date" {...register("dedline", { required: true })} />
+          <input type="date" {...register("date", { required: true })} />
         </div>
         <div>
           <label htmlFor="Assign"> Assign To</label>
           <select
             defaultValue="pick One"
             type="text"
-            {...register("assign", { required: true })}
+            {...register("assignedTo", { required: true })}
           >
             <option> Naimul</option>
             <option> Nazmul</option>
